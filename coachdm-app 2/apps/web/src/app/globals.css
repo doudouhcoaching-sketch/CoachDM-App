@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-bg text-white antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-white min-h-screen;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-primary-light;
+  }
+
+  /* Scrollbar premium */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-border-strong;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold transition-all duration-150;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-bg hover:bg-primary-light shadow-lg shadow-primary/20 hover:shadow-primary/40;
+  }
+
+  .btn-secondary {
+    @apply btn bg-surface text-white border border-border hover:bg-surface-elevated hover:border-border-strong;
+  }
+
+  .btn-ghost {
+    @apply btn text-primary hover:bg-primary/10;
+  }
+
+  .input {
+    @apply w-full bg-surface border border-border rounded-xl px-4 py-3 text-white placeholder:text-muted-dim focus:outline-none focus:border-primary transition-colors;
+  }
+
+  .card {
+    @apply bg-surface border border-border-subtle rounded-2xl p-6;
+  }
+
+  .gold-text {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  .container-cdm {
+    @apply mx-auto max-w-6xl px-6;
+  }
+}
