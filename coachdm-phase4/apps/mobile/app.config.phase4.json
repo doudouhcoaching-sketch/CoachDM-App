@@ -1,0 +1,47 @@
+{
+  "_comment": "À merger dans apps/mobile/app.json (Phase 1-3). Section 'expo' uniquement.",
+  "expo": {
+    "ios": {
+      "infoPlist": {
+        "NSHealthShareUsageDescription": "Coach DM lit ton sommeil, ta variabilité cardiaque (HRV) et ton hydratation depuis Apple Health pour calculer ton Recovery Score et personnaliser tes recommandations.",
+        "NSHealthUpdateUsageDescription": "Coach DM peut écrire ton sommeil et ton hydratation dans Apple Health pour synchroniser avec d'autres applications de santé.",
+        "UIBackgroundModes": ["fetch", "remote-notification"]
+      },
+      "entitlements": {
+        "com.apple.developer.healthkit": true,
+        "com.apple.developer.healthkit.access": [
+          "health-records"
+        ]
+      }
+    },
+    "android": {
+      "permissions": [
+        "android.permission.health.READ_SLEEP",
+        "android.permission.health.WRITE_SLEEP",
+        "android.permission.health.READ_HEART_RATE_VARIABILITY",
+        "android.permission.health.READ_HYDRATION",
+        "android.permission.health.WRITE_HYDRATION",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.SCHEDULE_EXACT_ALARM"
+      ]
+    },
+    "plugins": [
+      [
+        "react-native-health",
+        {
+          "isClinicalDataEnabled": false,
+          "healthSharePermission": "Coach DM lit tes données de santé pour calculer ton Recovery Score.",
+          "healthUpdatePermission": "Coach DM peut écrire des données de santé pour synchronisation."
+        }
+      ],
+      "react-native-health-connect",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#D4AF37"
+        }
+      ]
+    ]
+  }
+}

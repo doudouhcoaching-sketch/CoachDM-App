@@ -1,0 +1,11 @@
+{
+  "_comment": "Dépendances Phase 4 à merger dans apps/mobile/package.json",
+  "dependencies": {
+    "react-native-health": "^1.19.0",
+    "react-native-health-connect": "^3.3.0",
+    "expo-notifications": "~0.29.0",
+    "expo-device": "~7.0.0",
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-native-community/datetimepicker": "8.2.0"
+  }
+}
