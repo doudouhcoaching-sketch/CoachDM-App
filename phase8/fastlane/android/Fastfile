@@ -1,0 +1,79 @@
+# ============================================================
+# COACH DM — Android Fastfile
+# Path: apps/mobile/fastlane/Fastfile (Android section, or separate)
+# Usage:
+#   bundle exec fastlane android internal    → Play Internal Testing
+#   bundle exec fastlane android production  → Production rollout
+#   bundle exec fastlane android metadata    → Push metadata only
+# ============================================================
+
+default_platform(:android)
+
+platform :android do
+  before_all do
+    ENV["SUPPLY_PACKAGE_NAME"] = "be.coachdm.app"
+  end
+
+  desc "Upload latest .aab to Play Internal Testing"
+  lane :internal do
+    upload_to_play_store(
+      package_name: "be.coachdm.app",
+      track: "internal",
+      release_status: "draft",
+      aab: "../../build/coachdm-latest.aab",
+      json_key: "./google-play-service-account.json",
+      skip_upload_metadata: false,
+      skip_upload_changelogs: false,
+      skip_upload_images: false,
+      skip_upload_screenshots: false,
+      rollout: "1.0",
+      validate_only: false
+    )
+  end
+
+  desc "Promote latest internal build to production (staged rollout)"
+  lane :production do
+    upload_to_play_store(
+      package_name: "be.coachdm.app",
+      track: "production",
+      release_status: "inProgress",
+      track_promote_from: "internal",
+      rollout: "0.1",  # 10% staged rollout initial
+      json_key: "./google-play-service-account.json",
+      skip_upload_metadata: false,
+      skip_upload_changelogs: false,
+      skip_upload_images: false,
+      skip_upload_screenshots: false,
+      validate_only: false
+    )
+  end
+
+  desc "Push metadata + listings + screenshots only"
+  lane :metadata do
+    upload_to_play_store(
+      package_name: "be.coachdm.app",
+      json_key: "./google-play-service-account.json",
+      skip_upload_aab: true,
+      skip_upload_apk: true,
+      skip_upload_changelogs: true,
+      validate_only: false
+    )
+  end
+
+  desc "Bump staged rollout from 10% → 50% → 100%"
+  lane :rollout_bump do |options|
+    percentage = options[:percentage] || "0.5"
+    upload_to_play_store(
+      package_name: "be.coachdm.app",
+      track: "production",
+      rollout: percentage,
+      json_key: "./google-play-service-account.json",
+      skip_upload_aab: true,
+      skip_upload_apk: true,
+      skip_upload_metadata: true,
+      skip_upload_changelogs: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+end

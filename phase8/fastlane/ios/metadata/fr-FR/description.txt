@@ -1,0 +1,44 @@
+Coach DM est l'application de coaching premium fondée par Doudouh M., coach certifié CrossFit L3 (CCFT), NASM CPT/PES/CES, Ereps Pro L4, FIFA Medical Diploma et ACE BCS.
+
+Tout ce dont tu as besoin pour performer, transformer ton corps et exceller — dans une seule app trilingue (FR/EN/NL).
+
+NUTRITION INTELLIGENTE
+• Calcul automatique de tes macros (Mifflin-St Jeor + Katch-McArdle si %BF)
+• Scan code-barres OpenFoodFacts
+• 20 recettes signature trilingues (petit-déj, déjeuner, dîner, post-workout)
+• 30 conseils contextuels par moment de la journée
+• Tracking calories/protéines/glucides/lipides quotidien
+
+ENTRAÎNEMENT SCIENCE-BASED
+• 80+ exercices avec tips science-based (Schoenfeld, McGill, Contreras)
+• 8 stations Hyrox avec normes RX
+• 22 programmes premium (Fat Burner, Hyrox Race, Football Elite, etc.)
+• Session player avec live set logger + rest timer + alertes PR
+• Détection automatique des records personnels (formule Epley)
+
+MOBILITÉ & WEARABLES
+• Routines mobilité quotidiennes 10-15 min (FRC, CARs, PAILs/RAILs)
+• Sync Apple Health (sommeil, HRV, fréquence cardiaque, pas)
+• Score de récupération 0-100 quotidien
+• Alertes de surcharge (ACWR > 1.3 — Gabbett 2016)
+
+IA COACH ASSISTANT
+• Conversations 24/7 avec ton coach IA, science-based
+• Détection automatique des plateaus
+• Suggestions de séances adaptées à ton état de récupération
+• Ajustements proposés au coach humain pour validation
+
+COMMUNAUTÉ
+• Feed posts + réactions + commentaires
+• Challenges mensuels et hebdomadaires
+• Leaderboards opt-in
+• Stories 24h
+
+COACHING B2B
+• Messaging coach↔client temps-réel
+• Check-ins hebdomadaires (poids, mensurations, photos)
+• Programmes assignés par ton coach
+
+19,99€/mois après 7 jours d'essai gratuit. Sans engagement, annulation en un clic.
+
+Coach DM · Doudouh M. · Reasfit Vilvoorde, Belgique · BCE BE0840.260.421 · coachdm.be

@@ -1,0 +1,73 @@
+{
+  "cli": {
+    "version": ">= 13.0.0",
+    "appVersionSource": "remote",
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "base": {
+      "node": "20.11.1",
+      "env": {
+        "EXPO_PUBLIC_BRAND": "Coach DM",
+        "EXPO_PUBLIC_BCE": "BE0840.260.421",
+        "EXPO_PUBLIC_DEFAULT_LOCALE": "fr",
+        "EXPO_PUBLIC_AVAILABLE_LOCALES": "fr,en,nl"
+      },
+      "ios": {
+        "resourceClass": "m-medium"
+      },
+      "android": {
+        "resourceClass": "medium"
+      }
+    },
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development",
+      "env": {
+        "EXPO_PUBLIC_ENV": "development"
+      }
+    },
+    "preview": {
+      "extends": "base",
+      "distribution": "internal",
+      "channel": "preview",
+      "ios": {
+        "simulator": false
+      },
+      "env": {
+        "EXPO_PUBLIC_ENV": "preview"
+      }
+    },
+    "production": {
+      "extends": "base",
+      "channel": "production",
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_ENV": "production"
+      },
+      "ios": {
+        "buildConfiguration": "Release"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "doudouh.coaching@gmail.com",
+        "ascAppId": "__REPLACE_WITH_APP_STORE_CONNECT_APP_ID__",
+        "appleTeamId": "__REPLACE_WITH_APPLE_TEAM_ID__",
+        "language": "fr-FR"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./google-play-service-account.json",
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
+  }
+}

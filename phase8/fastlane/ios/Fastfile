@@ -1,0 +1,82 @@
+# ============================================================
+# COACH DM — iOS Fastfile
+# Path: apps/mobile/fastlane/Fastfile
+# Usage:
+#   bundle exec fastlane ios beta       → upload TestFlight
+#   bundle exec fastlane ios release    → release App Store
+#   bundle exec fastlane ios metadata   → push metadata only
+# ============================================================
+
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    ENV["FASTLANE_HIDE_CHANGELOG"] = "1"
+    setup_ci if ENV['CI']
+  end
+
+  desc "Upload latest build to TestFlight"
+  lane :beta do
+    api_key = app_store_connect_api_key(
+      key_id:       ENV["ASC_KEY_ID"],
+      issuer_id:    ENV["ASC_ISSUER_ID"],
+      key_filepath: ENV["ASC_KEY_PATH"],
+      in_house:     false,
+    )
+
+    pilot(
+      api_key: api_key,
+      app_identifier: "be.coachdm.app",
+      skip_waiting_for_build_processing: false,
+      skip_submission: true,
+      distribute_external: false,
+      changelog: "Coach DM Premium · build interne"
+    )
+  end
+
+  desc "Push metadata + screenshots (no binary)"
+  lane :metadata do
+    api_key = app_store_connect_api_key(
+      key_id:       ENV["ASC_KEY_ID"],
+      issuer_id:    ENV["ASC_ISSUER_ID"],
+      key_filepath: ENV["ASC_KEY_PATH"],
+    )
+
+    deliver(
+      api_key: api_key,
+      app_identifier: "be.coachdm.app",
+      skip_binary_upload: true,
+      skip_screenshots: false,
+      force: true,
+      automatic_release: false,
+      submit_for_review: false,
+      run_precheck_before_submit: true,
+      precheck_include_in_app_purchases: false,
+      languages: ["fr-FR", "en-US", "nl-NL"]
+    )
+  end
+
+  desc "Release to App Store (after review)"
+  lane :release do
+    api_key = app_store_connect_api_key(
+      key_id:       ENV["ASC_KEY_ID"],
+      issuer_id:    ENV["ASC_ISSUER_ID"],
+      key_filepath: ENV["ASC_KEY_PATH"],
+    )
+
+    deliver(
+      api_key: api_key,
+      app_identifier: "be.coachdm.app",
+      skip_binary_upload: true,
+      skip_screenshots: false,
+      submit_for_review: true,
+      automatic_release: true,
+      force: true,
+      submission_information: {
+        add_id_info_uses_idfa: false,
+        export_compliance_uses_encryption: false,
+      },
+      languages: ["fr-FR", "en-US", "nl-NL"]
+    )
+  end
+end

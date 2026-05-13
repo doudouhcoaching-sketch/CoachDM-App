@@ -1,0 +1,83 @@
+{
+  "products": [
+    {
+      "name": "Coach DM Premium",
+      "description_fr": "Accès complet à l'app Coach DM : nutrition intelligente, workouts science-based, mobilité, communauté, IA coach assistant. Trilingue FR/EN/NL.",
+      "description_en": "Full access to Coach DM app: smart nutrition, science-based workouts, mobility, community, AI coach assistant. Trilingual FR/EN/NL.",
+      "description_nl": "Volledige toegang tot de Coach DM-app: slimme voeding, science-based workouts, mobiliteit, gemeenschap, AI coach assistant. Drietalig FR/EN/NL.",
+      "images": [
+        "https://coachdm.be/assets/stripe-product-cover.png"
+      ],
+      "metadata": {
+        "brand": "Coach DM",
+        "owner": "Doudouh M.",
+        "bce": "BE0840.260.421",
+        "locale": "fr,en,nl",
+        "category": "coaching"
+      },
+      "tax_code": "txcd_10103001",
+      "prices": [
+        {
+          "currency": "eur",
+          "unit_amount": 1999,
+          "recurring": {
+            "interval": "month",
+            "trial_period_days": 7
+          },
+          "nickname": "Premium Monthly EUR",
+          "metadata": {
+            "tier": "premium",
+            "trial_days": "7"
+          }
+        }
+      ]
+    }
+  ],
+  "webhook_endpoint": {
+    "url_template": "https://__PROJECT_REF__.supabase.co/functions/v1/stripe-webhook",
+    "description": "Coach DM Edge Function — production",
+    "enabled_events": [
+      "checkout.session.completed",
+      "customer.subscription.created",
+      "customer.subscription.updated",
+      "customer.subscription.deleted",
+      "customer.subscription.trial_will_end",
+      "invoice.paid",
+      "invoice.payment_failed",
+      "invoice.payment_action_required"
+    ],
+    "api_version": "2024-12-18.acacia"
+  },
+  "customer_portal": {
+    "business_profile": {
+      "headline_fr": "Coach DM — Gère ton abonnement",
+      "headline_en": "Coach DM — Manage your subscription",
+      "headline_nl": "Coach DM — Beheer je abonnement",
+      "privacy_policy_url": "https://coachdm.be/privacy.html",
+      "terms_of_service_url": "https://coachdm.be/cgv.html"
+    },
+    "features": {
+      "customer_update": {
+        "enabled": true,
+        "allowed_updates": ["email", "name", "address"]
+      },
+      "invoice_history": { "enabled": true },
+      "payment_method_update": { "enabled": true },
+      "subscription_cancel": {
+        "enabled": true,
+        "mode": "at_period_end",
+        "cancellation_reason": {
+          "enabled": true,
+          "options": [
+            "too_expensive",
+            "missing_features",
+            "switched_service",
+            "unused",
+            "other"
+          ]
+        }
+      }
+    },
+    "default_return_url": "https://app.coachdm.be/account"
+  }
+}
