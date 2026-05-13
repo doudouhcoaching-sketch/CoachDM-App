@@ -1,0 +1,26 @@
+{
+  "_comment": "Coach DM · Phase 5 · Dépendances à fusionner dans les package.json existants",
+  "_instructions": "Ajoute ces deps dans apps/mobile/package.json (rubrique dependencies). Les versions sont alignées sur Expo SDK 52 + RN 0.76.",
+  "apps/mobile/dependencies_to_add": {
+    "@shopify/react-native-skia": "^1.5.0",
+    "react-native-gesture-handler": "~2.20.2",
+    "react-native-reanimated": "~3.16.1",
+    "expo-image-picker": "~16.0.4",
+    "expo-file-system": "~18.0.6",
+    "base64-arraybuffer": "^1.0.2",
+    "react-native-html-to-pdf": "^0.12.0",
+    "react-native-share": "^11.0.3",
+    "@react-navigation/native-stack": "^7.1.14"
+  },
+  "apps/mobile/peer_deps_note": "react-native-html-to-pdf et react-native-share nécessitent expo prebuild (managed workflow ne suffit pas). Si tu restes sur Expo Go, remplace par expo-print + expo-sharing.",
+  "apps/mobile/_expo_print_alternative_deps": {
+    "expo-print": "~14.0.2",
+    "expo-sharing": "~13.0.0"
+  },
+
+  "apps/web/dependencies_to_add": {
+    "recharts": "^2.13.3"
+  },
+
+  "packages/shared/notes": "Aucune nouvelle dépendance — uniquement TypeScript pur."
+}
